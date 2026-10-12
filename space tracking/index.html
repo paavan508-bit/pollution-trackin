@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Pollution & Satellite Telemetry Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="top-nav">
+        <div class="brand">🛰️ GeoView AI Telemetry</div>
+        <button id="modeToggle" onclick="toggleDashboardMode()">Switch to Gov/AI Data</button>
+    </header>
+
+    <main>
+        <!-- SATELLITE TELEMETRY VIEW -->
+        <div id="satelliteView" class="view-section active-view">
+            <div class="sat-card">
+                <h2>Live Multispectral Satellite Imagery</h2>
+                <p>Active Target Location: <span id="targetName">India</span></p>
+                
+                <div class="map-container" id="mapDisplay">
+                    <div class="map-grid-overlay"></div>
+                    <div class="map-pulse-point"></div>
+                    <span class="map-label">LIVE FEED: <span id="mapTargetText">INDIA</span> (MSI-7 Multi-Sensor)</span>
+                </div>
+
+                <div class="metrics-row">
+                    <div class="metric-box">
+                        <div class="ring-chart" id="cloudRing">
+                            <span id="cloudMetric">10%</span>
+                        </div>
+                        <p>Cloud Cover</p>
+                    </div>
+                    <div class="metric-box">
+                        <div class="ring-chart" id="ndviRing">
+                            <span id="ndviMetric">74%</span>
+                        </div>
+                        <p>Vegetation Health (NDVI)</p>
+                    </div>
+                    <div class="metric-box">
+                        <div class="ring-chart" id="moistureRing">
+                            <span id="moistureMetric">59%</span>
+                        </div>
+                        <p>Surface Moisture</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GOV / AI ASSISTANT VIEW -->
+        <div id="govAIView" class="view-section">
+            <div class="chat-box">
+                <div class="chat-header">🌐 Government Open Data AI Assistant (USGS / NASA / EPA)</div>
+                <div class="chat-messages" id="chatLogs">
+                    <p><b>AI:</b> Geospatial intelligence engine online. Type any country, city, or region name to fetch its live environmental metrics and satellite overlay.</p>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="userInput" placeholder="Enter target location (e.g., India, Tokyo, Brazil)..." onkeypress="handleKey(event)">
+                    <button onclick="sendQuery()">Analyze</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
